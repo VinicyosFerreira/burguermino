@@ -3,6 +3,7 @@ import Slogan from './components/Slogan';
 import MainBurgers from './components/MainBurgers';
 import PromotionCampaign from './components/PromotionCampaign';
 import LocationMap from './components/LocationMap';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <PromotionCampaign />
         <LocationMap />
       </div>
+      <Footer />
     </div>
   );
 }
