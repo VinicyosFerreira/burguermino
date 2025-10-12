@@ -6,7 +6,7 @@ const PromotionCampaign = () => {
       <h2 className="text-xl font-semibold text-primary">
         Campanha de promoção
       </h2>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2">
         <label htmlFor="email" className="text-sm text-secondary">
           Digite seu e-mail para receber nossas promoções exclusivas:{' '}
         </label>
@@ -17,7 +17,7 @@ const PromotionCampaign = () => {
           placeholder="Digite seu e-mail"
           className="rounded-md border border-primary p-2 text-secondary outline-accent"
         />
-        <Button>Enviar</Button>
+        <Button className="w-[280px]">Enviar</Button>
       </div>
     </div>
   );
