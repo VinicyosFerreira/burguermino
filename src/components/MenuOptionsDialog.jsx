@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import Button from '../components/Button';
-const MenuBurgersDialog = ({ burger, closeDialog }) => {
+
+const MenuOptionsDialog = ({ optionType, closeDialog }) => {
   return (
     <>
       {createPortal(
@@ -16,25 +17,23 @@ const MenuBurgersDialog = ({ burger, closeDialog }) => {
               </Button>
             </div>
 
-            <h3 className="texl-lg text-center">Detalhes do burguer</h3>
+            <h3 className="texl-xl text-center font-bold">{optionType.name}</h3>
 
-            <div className="my-3 flex gap-5 px-4 py-4">
+            <div className="my-3 flex items-center gap-5 px-4 py-4">
               <div className="space-y-2">
-                <p className="font-bold">{burger.name}</p>
-
                 <div className="w-[220px]">
                   <img
-                    src={burger.imgUrl}
+                    src={optionType.imgUrl}
                     className="rounded-lg object-cover"
-                    alt={burger.name}
+                    alt={optionType.name}
                   />
                 </div>
               </div>
 
               <div className="flex flex-col justify-center space-y-1">
-                <p className="text-sm font-semibold">Ingredientes</p>
-                <p>{burger.description}</p>
-                <p className="font-semibold">R${burger.price}</p>
+                <p className="text-sm font-semibold">Descrição</p>
+                <p>{optionType.description}</p>
+                <p className="font-semibold">R${optionType.price}</p>
                 <Button className="w-[220px]">Adicionar ao carrinho</Button>
               </div>
             </div>
@@ -46,4 +45,4 @@ const MenuBurgersDialog = ({ burger, closeDialog }) => {
   );
 };
 
-export default MenuBurgersDialog;
+export default MenuOptionsDialog;

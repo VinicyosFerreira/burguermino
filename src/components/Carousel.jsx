@@ -28,7 +28,7 @@ const Carousel = (props) => {
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={'embla__dot'.concat(
-                index === selectedIndex ? 'embla__dot--selected' : ''
+                index === selectedIndex ? `${' '}embla__dot--selected` : ''
               )}
             />
           ))}
