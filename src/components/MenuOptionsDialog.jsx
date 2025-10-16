@@ -1,7 +1,12 @@
 import { createPortal } from 'react-dom';
 import Button from '../components/Button';
+import ADD_CART from '../actions/add-cart';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 const MenuOptionsDialog = ({ optionType, closeDialog }) => {
+  const { dispatchCart } = useContext(CartContext);
+
   return (
     <>
       {createPortal(
@@ -34,7 +39,12 @@ const MenuOptionsDialog = ({ optionType, closeDialog }) => {
                 <p className="text-sm font-semibold">Descrição</p>
                 <p>{optionType.description}</p>
                 <p className="font-semibold">R${optionType.price}</p>
-                <Button className="w-[220px]">Adicionar ao carrinho</Button>
+                <Button
+                  className="w-[220px]"
+                  onClick={() => ADD_CART(dispatchCart, optionType)}
+                >
+                  Adicionar ao carrinho
+                </Button>
               </div>
             </div>
           </div>

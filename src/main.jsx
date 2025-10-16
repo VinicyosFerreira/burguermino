@@ -6,6 +6,7 @@ import MenuPage from './pages/Menu.jsx';
 import OrdersPage from './pages/Orders.jsx';
 import NotFoundPage from './pages/NotFound.jsx';
 import './index.css';
+import { CartContextProvider } from './context/CartContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartContextProvider>
+      <RouterProvider router={router} />
+    </CartContextProvider>
   </StrictMode>
 );
