@@ -1,11 +1,15 @@
 import { createPortal } from 'react-dom';
 import Button from '../components/Button';
-import ADD_CART from '../actions/add-cart';
-import { useContext } from 'react';
+import { ADD_CART } from '../actions/cart-action';
+import { useContext, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 
 const MenuOptionsDialog = ({ optionType, closeDialog }) => {
-  const { dispatchCart } = useContext(CartContext);
+  const { cartState, dispatchCart } = useContext(CartContext);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartState));
+  }, [cartState]);
 
   return (
     <>

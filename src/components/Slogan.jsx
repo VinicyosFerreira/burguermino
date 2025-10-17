@@ -7,7 +7,7 @@ const Slogan = () => {
         <h2>Uma explosão de experiências </h2>
         <h2>e sabores inesquecíveis !</h2>
       </div>
-      <div className="w-[90%] md:w-[35%]">
+      <div className="w-[90%] md:w-[500px]">
         <img src={imgSlogan} alt="Imagem do Slogan" />
       </div>
     </div>
