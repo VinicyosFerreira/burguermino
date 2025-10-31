@@ -9,6 +9,7 @@ import { GiNotebook } from 'react-icons/gi';
 import { useState } from 'react';
 const OrdersPage = () => {
   const [step, setStep] = useState(0);
+  const [fields, setFields] = useState();
 
   const nextStep = () => {
     setStep((stepParams) => stepParams + 1);
@@ -16,6 +17,18 @@ const OrdersPage = () => {
 
   const prevStep = () => {
     setStep((stepParams) => stepParams - 1);
+  };
+
+  const handleFields = (key, value) => {
+    setFields({
+      ...fields,
+      [key]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(fields);
   };
 
   const steps = [
@@ -27,12 +40,24 @@ const OrdersPage = () => {
     {
       title: 'Dados do cliente',
       icon: <GiNotebook className="text-2xl" />,
-      component: <CustomerData nextStep={nextStep} prevStep={prevStep} />,
+      component: (
+        <CustomerData
+          nextStep={nextStep}
+          prevStep={prevStep}
+          handleFields={handleFields}
+        />
+      ),
     },
     {
       title: 'Método de pagamento',
       icon: <MdOutlinePayment className="text-2xl" />,
-      component: <PaymentMethod prevStep={prevStep} />,
+      component: (
+        <PaymentMethod
+          prevStep={prevStep}
+          handleFields={handleFields}
+          fields={fields}
+        />
+      ),
     },
   ];
 
@@ -44,7 +69,7 @@ const OrdersPage = () => {
           {steps[step].icon}
           <h2 className="text-xl font-semibold">{steps[step].title}</h2>
         </div>
-        {steps[step].component}
+        <form onSubmit={handleSubmit}>{steps[step].component}</form>
       </div>
       <Footer />
     </div>
