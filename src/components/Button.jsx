@@ -23,6 +23,7 @@ const Button = ({ children, to, variant = {}, className, ...props }) => {
   return (
     <button
       className={`${classButton} ${getVariantColor()} ${className}`}
+      type="button"
       {...props}
     >
       {children}
