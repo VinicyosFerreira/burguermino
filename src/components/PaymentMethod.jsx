@@ -4,7 +4,9 @@ import { GiMoneyStack } from 'react-icons/gi';
 import Input from './Input';
 import Button from '../components/Button';
 
-const PaymentMethod = ({ prevStep, handleFields, fields }) => {
+const PaymentMethod = ({ prevStep, register, errors, watch }) => {
+  const paymentMethods = watch('paymentSchema.paymentMethods');
+
   return (
     <div className="mx-auto flex w-[450px] flex-col gap-2 rounded-md bg-foreground/10 p-5">
       <div className="flex items-center justify-between">
@@ -13,13 +15,11 @@ const PaymentMethod = ({ prevStep, handleFields, fields }) => {
           <label htmlFor="pix">Pix</label>
         </div>
         <input
+          {...register('paymentSchema.paymentMethods')}
           type="radio"
           id="pix"
-          name="payment-methods"
-          value={'pix'}
+          value="pix"
           className="size-4"
-          onChange={(e) => handleFields('paymentMethod', e.target.value)}
-          checked={fields.paymentMethod === 'pix'}
         />
       </div>
 
@@ -29,78 +29,85 @@ const PaymentMethod = ({ prevStep, handleFields, fields }) => {
           <label htmlFor="credit-card">Cartão de crédito</label>
         </div>
         <input
+          {...register('paymentSchema.paymentMethods')}
           type="radio"
           id="credit-card"
-          value={'card'}
-          name="payment-methods"
+          value="credit-card"
           className="size-4"
-          checked={fields.paymentMethod === 'card'}
-          onChange={(e) => handleFields('paymentMethod', e.target.value)}
         />
       </div>
 
       <div className="flex items-center justify-between">
         <div className="flex gap-2">
           <GiMoneyStack className="text-2xl text-green-800" />
-          <label htmlFor="money">Dinheiro</label>
+          <label htmlFor="cash">Dinheiro</label>
         </div>
         <input
+          {...register('paymentSchema.paymentMethods')}
           type="radio"
-          id="money"
-          value={'money'}
-          name="payment-methods"
+          id="cash"
+          value="cash"
           className="size-4"
-          checked={fields.paymentMethod === 'money'}
-          onChange={(e) => handleFields('paymentMethod', e.target.value)}
         />
       </div>
 
-      {fields?.paymentMethod === 'card' && (
+      {errors.paymentSchema?.paymentMethods && !paymentMethods && (
+        <p className="text-sm text-red-500">
+          {errors.paymentSchema?.paymentMethods?.message}
+        </p>
+      )}
+
+      {paymentMethods === 'credit-card' && (
         <div className="flex flex-col gap-2">
           <Input
             type="text"
-            id="card-number"
+            {...register('paymentSchema.cardNumber')}
+            id="cardNumber"
             label="Número do cartão"
-            value={fields.cardNumber}
-            name="card-number"
             placeholder="Digite o número do cartão"
-            onChange={(e) => handleFields('cardNumber', e.target.value)}
           />
+          <p className="text-sm text-red-500">
+            {errors.paymentSchema?.cardNumber?.message}
+          </p>
 
           <Input
             type="text"
-            id="card-holder"
-            name="card-holder"
+            {...register('paymentSchema.cardHolder')}
+            id="cardHolder"
             label="Titular do cartão"
-            value={fields.cardHolder}
             placeholder="Digite o titular do cartão"
-            onChange={(e) => handleFields('cardHolder', e.target.value)}
           />
+          <p className="text-sm text-red-500">
+            {errors.paymentSchema?.cardHolder?.message}
+          </p>
 
           <div className="flex w-full gap-2">
             <Input
               label="Data de vencimento"
+              {...register('paymentSchema.cardExpirationDate')}
               type="date"
-              id="expiration-date"
+              id="cardExpirationDate"
               width="w-[70%]"
-              value={fields.expirationDate}
-              name="expiration-date"
-              onChange={(e) =>
-                handleFields('cardExpirationDate', e.target.value)
-              }
               placeholder="Data de vencimento"
             />
 
             <Input
               label="CVV"
+              {...register('paymentSchema.cardCvv')}
               type="text"
               width="CVV"
-              id="card-cvv"
-              value={fields.cardCvv}
-              name="card-cvv"
-              onChange={(e) => handleFields('cardCvv', e.target.value)}
+              id="cardCvv"
               placeholder="CVV"
             />
+          </div>
+
+          <div className="flex justify-between">
+            <p className="text-sm text-red-500">
+              {errors.paymentSchema?.cardExpirationDate?.message}
+            </p>
+            <p className="text-end text-sm text-red-500">
+              {errors.paymentSchema?.cardCvv?.message}
+            </p>
           </div>
         </div>
       )}

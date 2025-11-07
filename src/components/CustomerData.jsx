@@ -1,61 +1,66 @@
 import Button from '../components/Button';
 import Input from './Input';
 
-const CustomerData = ({ nextStep, prevStep, handleFields, fields }) => {
+const CustomerData = ({ nextStep, prevStep, register, errors }) => {
   return (
     <div className="mx-auto flex w-[450px] flex-col items-center justify-center gap-2 rounded-md bg-foreground/10 p-5">
       <Input
+        {...register('name')}
         label="Nome"
         type="text"
         id="name"
         name="name"
-        value={fields.name}
         placeholder="Digite seu nome"
-        onChange={(e) => handleFields('name', e.target.value)}
       />
+      <p className="text-sm text-red-500">{errors.name?.message}</p>
 
       <Input
+        {...register('cpf')}
         label="CPF"
         type="text"
         id="cpf"
-        value={fields.cpf}
         name="cpf"
         placeholder="Digite seu CPF"
-        onChange={(e) => handleFields('cpf', e.target.value)}
       />
 
+      <p className="text-sm text-red-500">{errors.cpf?.message}</p>
       <Input
+        {...register('cep')}
         label="CEP"
         type="text"
         id="cep"
-        value={fields.cep}
         name="cep"
         placeholder="Digite seu CEP"
-        onChange={(e) => handleFields('cep', e.target.value)}
       />
+      <p className="text-sm text-red-500">{errors.cep?.message}</p>
 
       <div className="flex w-full gap-2">
         <Input
+          {...register('address')}
           label="Endereço"
           type="text"
           id="address"
           width="w-[70%]"
-          value={fields.address}
           name="address"
           placeholder="Digite seu endereço"
-          onChange={(e) => handleFields('address', e.target.value)}
         />
 
         <Input
+          {...register('houseNumber')}
           label="Número"
           type="text"
           width="w-[30%]"
-          value={fields.number}
-          id="number"
-          name="number"
-          onChange={(e) => handleFields('number', e.target.value)}
+          id="houseNumber"
+          name="houseNumber"
           placeholder="Número"
         />
+      </div>
+
+      <div className="flex justify-between">
+        <p className="text-sm text-red-500">{errors.address?.message}</p>
+        <p className="text-end text-sm text-red-500">
+          {errors.houseNumber?.message}
+        </p>
       </div>
 
       <div className="mt-2 flex w-full items-center justify-between">

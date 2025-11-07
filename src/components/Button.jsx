@@ -1,8 +1,8 @@
 import HyperLink from './HyperLink';
 
 const Button = ({ children, to, variant = {}, className, ...props }) => {
-  const classButton = `rounded-lg text-center p-3 text-sm 
-  font-semibold transition`;
+  const classButton = `rounded-lg text-center p-3 text-sm
+  font-semibold transition disabled:cursor-not-allowed`;
   const getVariantColor = () => {
     switch (variant.color) {
       case 'ghost':

@@ -7,22 +7,11 @@ import CustomerData from '../components/CustomerData';
 import PaymentMethod from '../components/PaymentMethod';
 import { GiNotebook } from 'react-icons/gi';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { formSchema } from '../schemas/form-schema';
 const OrdersPage = () => {
-  const initialValuesFields = {
-    name: '',
-    cpf: '',
-    cep: '',
-    address: '',
-    number: '',
-    paymentMethod: '',
-    cardNumber: '',
-    cardHolder: '',
-    cardExpirationDate: '',
-    cardCvv: '',
-  };
-
   const [step, setStep] = useState(0);
-  const [fields, setFields] = useState(initialValuesFields);
 
   const nextStep = () => {
     setStep((stepParams) => stepParams + 1);
@@ -32,16 +21,34 @@ const OrdersPage = () => {
     setStep((stepParams) => stepParams - 1);
   };
 
-  const handleFields = (key, value) => {
-    setFields({
-      ...fields,
-      [key]: value,
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: {
+      name: '',
+      cpf: '',
+      cep: '',
+      address: '',
+      houseNumber: '',
+      paymentSchema: {
+        paymentMethods: '',
+        cardNumber: '',
+        cardHolder: '',
+        cardExpirationDate: '',
+        cardCvv: '',
+      },
+    },
+    resolver: zodResolver(formSchema),
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(fields);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
   };
 
   const steps = [
@@ -57,8 +64,8 @@ const OrdersPage = () => {
         <CustomerData
           nextStep={nextStep}
           prevStep={prevStep}
-          handleFields={handleFields}
-          fields={fields}
+          errors={errors}
+          register={register}
         />
       ),
     },
@@ -68,22 +75,23 @@ const OrdersPage = () => {
       component: (
         <PaymentMethod
           prevStep={prevStep}
-          handleFields={handleFields}
-          fields={fields}
+          watch={watch}
+          register={register}
+          errors={errors}
         />
       ),
     },
   ];
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <div className="mb-3 flex-1">
         <div className="my-7 flex items-center justify-center gap-3">
           {steps[step].icon}
           <h2 className="text-xl font-semibold">{steps[step].title}</h2>
         </div>
-        <form onSubmit={handleSubmit}>{steps[step].component}</form>
+        <form onSubmit={handleSubmit(onSubmit)}>{steps[step].component}</form>
       </div>
       <Footer />
     </div>
