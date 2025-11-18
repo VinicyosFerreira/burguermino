@@ -1,16 +1,17 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { FaShoppingCart } from 'react-icons/fa';
 import { MdOutlinePayment } from 'react-icons/md';
-import Cart from '../components/Cart';
 import CustomerData from '../components/CustomerData';
 import PaymentMethod from '../components/PaymentMethod';
 import { GiNotebook } from 'react-icons/gi';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formSchema } from '../schemas/form-schema';
+import { CartContext } from '../context/CartContext';
+
 const OrdersPage = () => {
+  const { cartState } = useContext(CartContext);
   const [step, setStep] = useState(0);
 
   const nextStep = () => {
@@ -47,26 +48,32 @@ const OrdersPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const orderItems = [...cartState.cart].map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+        quantity: item.quantity,
+      };
+    });
+
+    const payload = {
+      ...data,
+      order: {
+        items: orderItems,
+        total: cartState.total,
+      },
+    };
+
+    console.log(payload);
     reset();
   };
 
   const steps = [
     {
-      title: 'Carrinho',
-      icon: <FaShoppingCart className="text-2xl" />,
-      component: <Cart nextStep={nextStep} />,
-    },
-    {
       title: 'Dados do cliente',
       icon: <GiNotebook className="text-2xl" />,
       component: (
-        <CustomerData
-          nextStep={nextStep}
-          prevStep={prevStep}
-          errors={errors}
-          register={register}
-        />
+        <CustomerData nextStep={nextStep} errors={errors} register={register} />
       ),
     },
     {
