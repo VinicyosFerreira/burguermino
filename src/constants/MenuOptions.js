@@ -5,10 +5,11 @@ import simpleBurger from '../assets/imgs/burger-simple.jpg';
 import veganoBurger from '../assets/imgs/vegano-burger.jpg';
 import burgerWithFries from '../assets/imgs/burger-with-fries.jpg';
 import OnionRings from '../assets/imgs/onion-rings.jpg';
-import CocaCola from '../assets/imgs/coca-cola.png';
+import CocaCola from '../assets/imgs/coca-cola.webp';
 import Pepsi from '../assets/imgs/pepsi.webp';
 import FantaUva from '../assets/imgs/fanta-uva.png';
 import FantaLaranja from '../assets/imgs/fanta-laranja.jpg';
+import Fritas from '../assets/imgs/fries.png';
 
 export const MENU_OPTIONS = [
   {
@@ -77,10 +78,19 @@ export const MENU_OPTIONS = [
   {
     id: 7,
     name: 'Onion Rings',
-    price: 21.79,
+    price: 23.79,
     imgUrl: OnionRings,
     description:
       '250g de anéis de cebolas crocante e 1 potinho de molho especial',
+    optionType: 'BURGER',
+  },
+  {
+    id: 8,
+    name: 'Fritas',
+    price: 23.79,
+    imgUrl: Fritas,
+    description:
+      '250g de batata frita crocantes, acompanhada de 1 potinho com molho especial',
     optionType: 'BURGER',
   },
   {
