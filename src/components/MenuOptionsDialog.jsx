@@ -11,7 +11,7 @@ const MenuOptionsDialog = ({ optionType, closeDialog }) => {
     <>
       {createPortal(
         <div className="fixed left-0 top-0 z-50 flex min-h-screen w-full items-center justify-center backdrop-blur">
-          <div className="w-[520px] rounded-xl bg-background/75">
+          <div className="rounded-xl bg-background/75 md:w-[520px]">
             <div className="text-end">
               <Button
                 className="text-center text-xl"
@@ -24,7 +24,7 @@ const MenuOptionsDialog = ({ optionType, closeDialog }) => {
 
             <h3 className="texl-xl text-center font-bold">{optionType.name}</h3>
 
-            <div className="my-3 flex items-center gap-5 px-4 py-4">
+            <div className="my-3 flex flex-col items-center gap-5 py-4 file:px-4 md:flex-row">
               <div className="space-y-2">
                 <div className="w-[220px]">
                   <img
@@ -35,12 +35,12 @@ const MenuOptionsDialog = ({ optionType, closeDialog }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center space-y-1">
+              <div className="flex flex-col justify-center space-y-1 p-4 md:p-0">
                 <p className="text-sm font-semibold">Descrição</p>
                 <p>{optionType.description}</p>
                 <p className="font-semibold">R${optionType.price}</p>
                 <Button
-                  className="w-[220px]"
+                  className="mx-auto w-[220px]"
                   onClick={() => ADD_CART(dispatchCart, optionType)}
                 >
                   Adicionar ao carrinho

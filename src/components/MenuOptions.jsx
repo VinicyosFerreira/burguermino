@@ -26,7 +26,7 @@ const MenuOptions = ({ optionType, openDialog, title }) => {
         {title}
       </h2>
       <div className="mx-auto mb-14 w-[90%]">
-        <div className="grid grid-cols-4 grid-rows-2 place-items-center gap-3">
+        <div className="grid grid-cols-1 grid-rows-2 place-items-center gap-3 md:grid-cols-4">
           {optionTypeSelected.map((optionType) => (
             <div key={optionType.id} className="relative">
               <p className="text-center font-semibold">{optionType.name}</p>
