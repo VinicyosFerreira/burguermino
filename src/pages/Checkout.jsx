@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formSchema } from '../schemas/form-schema';
 import { CartContext } from '../context/CartContext';
+import { toast } from 'sonner';
 
 const CheckoutPage = () => {
   const { cartState } = useContext(CartContext);
@@ -64,6 +65,7 @@ const CheckoutPage = () => {
       },
     };
 
+    toast.success('Pedido realizado com sucesso!');
     console.log(payload);
     reset();
   };

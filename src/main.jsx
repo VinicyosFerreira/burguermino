@@ -8,6 +8,7 @@ import NotFoundPage from './pages/NotFound.jsx';
 import './index.css';
 import { CartContextProvider } from './context/CartContext.jsx';
 import CartPage from './pages/Cart.jsx';
+import { Toaster } from 'sonner';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <CartContextProvider>
+      <Toaster />
       <RouterProvider router={router} />
     </CartContextProvider>
   </StrictMode>

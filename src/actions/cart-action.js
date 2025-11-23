@@ -1,3 +1,5 @@
+import { toast } from 'sonner';
+
 export const ADD_CART = (dispatch, optionType) => {
   dispatch({
     type: 'ADD_CART',
@@ -7,6 +9,8 @@ export const ADD_CART = (dispatch, optionType) => {
     type: 'CALCULATE_TOTAL',
     payload: optionType,
   });
+
+  toast.success(`${optionType.name} adicionado ao carrinho`);
 };
 
 export const REMOVE_CART = (dispatch, optionType) => {
@@ -18,6 +22,7 @@ export const REMOVE_CART = (dispatch, optionType) => {
     type: 'CALCULATE_TOTAL',
     payload: optionType,
   });
+  toast.success(`${optionType.name} removido do carrinho`);
 };
 
 export const INCREMENT_CART = (dispatch, optionType) => {
