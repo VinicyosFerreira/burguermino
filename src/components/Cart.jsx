@@ -57,7 +57,7 @@ const Cart = () => {
         <h2 className="text-2xl font-bold">
           Total: {cartState.total.toFixed(2)}R$
         </h2>
-        <Button className="w-[200px]" onClick={() => navigate('/orders')}>
+        <Button className="w-[200px]" onClick={() => navigate('/checkout')}>
           Finalizar compra
         </Button>
       </div>

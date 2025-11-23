@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { formSchema } from '../schemas/form-schema';
 import { CartContext } from '../context/CartContext';
 
-const OrdersPage = () => {
+const CheckoutPage = () => {
   const { cartState } = useContext(CartContext);
   const [step, setStep] = useState(0);
 
@@ -105,4 +105,4 @@ const OrdersPage = () => {
   );
 };
 
-export default OrdersPage;
+export default CheckoutPage;

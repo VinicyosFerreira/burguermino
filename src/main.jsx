@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import HomePage from './pages/Home.jsx';
 import MenuPage from './pages/Menu.jsx';
-import OrdersPage from './pages/Orders.jsx';
+import CheckoutPage from './pages/Checkout.jsx';
 import NotFoundPage from './pages/NotFound.jsx';
 import './index.css';
 import { CartContextProvider } from './context/CartContext.jsx';
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
     element: <CartPage />,
   },
   {
-    path: '/orders',
-    element: <OrdersPage />,
+    path: '/checkout',
+    element: <CheckoutPage />,
   },
   {
     path: '*',
