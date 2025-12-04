@@ -1,16 +1,68 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📝 Burguermino
+Burguermino é uma aplicação web de checkout rápido para hamburgueria.
+## 🚀 Tecnologias
 
-Currently, two official plugins are available:
+**React**: Biblioteca para construção de UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Tailwind**: Realizar a estilização da aplicação.
 
-## React Compiler
+**React Router** Realizar a implementação das rotas e navegação.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**React Icons**: Contém icones prontos para uso.
 
-## Expanding the ESLint configuration
+**Context API**: Elaborar lógica do estado global do carrinho.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Zod e React Hook Form**: Realizar a validação e tratamento de erros relacionados aos formulários da aplicação.
+## 💡 Como utilizar
+O software está estruturado em 4 páginas(Home,Carrinho,Cardápio e Checkout).
+
+**Home**: Contém informações gerais sobre a hamburgueria, os lanches mais vendidos e informações de localização.
+
+**Cardápio**: Contém as comidas oferecidas como os hambúrgueres e outros aperitivos, também bebidas disponíveis, além da informação detalhada de cada item, permitindo adicionar ao carrinho.
+
+**Carrinho**: Contém uma página de carrinho relacionada aos produtos selecionados, podendo adicionar ou decrementar em 1, remover,limpar carrinho, limpar todo carrinho e avançar com a compra.
+
+**Checkout**: Essa página contém o formulário em multietapas para inserção de dados do cliente e inserção do método de pagamento.
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── actions/      # Actions e dispatchs do reducer relacionado ao Cart
+├── assets/       # Arquivos de fontes e imagens
+├── constant/     # Dados constantes  da aplicação    
+├── context/      # Estado global da aplicação
+├── pages/        # As páginas da aplicação
+├── reducer/      # Arquivo de reducer do Cart
+├── schemas/      # Schema definidos para o Zod
+```
+## 🗺️ Explorando o código
+
+- Foi elaborado um fluxo de e-commerce para um checkout rápido fast food simulado.
+- A lógica está centrada no **reducer** e **Context API**, é core da aplicação, mantendo um carrinho salvo em **LocalStorage**.
+- A arquitetura do projeto tem ênfase na modularidade, facilidade em refatorar e implementar novas funcionlidades, visando um projeto com boas práticas de código, seguindo principios SOLID e Clean Code. 
+- Não contém autenticação no momento, porém pretendo implementar por garantir mais segurança e integridade de dados.
+- Zod e RHF permitem validação eficaz e integrada com tratamento de erros, reduzindo states e renders com otimização de inputs uncontrolleds.
+- Está em desenvolvimento um backend para aplicação, permitindo salvar dados, integração com API e muito mais.
+
+## 📦 Como rodar localmente 
+
+**Clonar projeto**
+
+**git clone** https://github.com/VinicyosFerreira/burguermino
+
+**Acessar pasta**
+
+cd burguermino
+
+**Instalar dependências**
+
+npm install
+
+**Rodar projeto**
+
+npm run dev
+## 🔗 Links 
+
+**Código Fonte** [Confira o código fonte]
+https://github.com/VinicyosFerreira/burguermino
