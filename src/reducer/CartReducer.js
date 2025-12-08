@@ -86,5 +86,13 @@ export const cartReducer = (state, action) => {
         total,
       };
     }
+
+    case 'CLEAR_CART':
+      // limpar o carrinho
+      return {
+        ...state,
+        cart: [],
+        total: 0,
+      };
   }
 };

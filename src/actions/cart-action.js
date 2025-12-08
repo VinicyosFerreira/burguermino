@@ -54,3 +54,10 @@ export const DECREMENT_CART = (dispatch, optionType) => {
     payload: optionType,
   });
 };
+
+export const CLEAR_CART = (dispatch) => {
+  dispatch({
+    type: 'CLEAR_CART',
+  });
+  toast.success('Carrinho limpo');
+};

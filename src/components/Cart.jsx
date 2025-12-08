@@ -2,6 +2,7 @@ import {
   REMOVE_CART,
   INCREMENT_CART,
   DECREMENT_CART,
+  CLEAR_CART,
 } from '../actions/cart-action';
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
@@ -59,6 +60,9 @@ const Cart = () => {
         </h2>
         <Button className="w-[200px]" onClick={() => navigate('/checkout')}>
           Finalizar compra
+        </Button>
+        <Button className="w-[200px]" onClick={() => CLEAR_CART(dispatchCart)}>
+          Limpar carrinho
         </Button>
       </div>
     </div>
