@@ -57,8 +57,20 @@ const CheckoutPage = () => {
       };
     });
 
+    const newData = Object.values(data.paymentSchema).find((item) => {
+      if (item) {
+        return item;
+      }
+    });
+
     const payload = {
-      ...data,
+      customer: {
+        name: data.name,
+        cpf: data.cpf,
+        cep: data.cep,
+        address: `${data.address}, ${data.houseNumber}`,
+        paymentMethods: newData,
+      },
       order: {
         items: orderItems,
         total: cartState.total,
@@ -66,8 +78,8 @@ const CheckoutPage = () => {
     };
 
     toast.success('Pedido realizado com sucesso!');
-    console.log(payload);
     reset();
+    console.log(payload);
   };
 
   const steps = [
