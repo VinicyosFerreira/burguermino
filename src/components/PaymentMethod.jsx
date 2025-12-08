@@ -19,7 +19,7 @@ const PaymentMethod = ({ prevStep, register, errors, watch }) => {
   };
 
   return (
-    <div className="mx-auto flex w-[450px] flex-col gap-2 rounded-md bg-foreground/10 p-5">
+    <div className="mx-auto flex flex-col gap-2 rounded-md bg-foreground/10 p-5 md:w-[450px]">
       <div className="flex items-center justify-between">
         <div className="flex gap-2">
           <FaPix className="text-2xl text-green-700" />
@@ -123,7 +123,7 @@ const PaymentMethod = ({ prevStep, register, errors, watch }) => {
         </div>
       )}
 
-      <div className="mt-2 flex w-full items-center justify-between">
+      <div className="mt-2 flex w-full items-center justify-between gap-2">
         <Button className="w-[200px]" type="submit">
           Concluir compra
         </Button>

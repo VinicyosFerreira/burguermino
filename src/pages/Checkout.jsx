@@ -77,9 +77,9 @@ const CheckoutPage = () => {
       },
     };
 
+    console.log(payload);
     toast.success('Pedido realizado com sucesso!');
     reset();
-    console.log(payload);
   };
 
   const steps = [

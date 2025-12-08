@@ -23,9 +23,9 @@ const Footer = () => {
         <span className="text-sm">Todos os direitos reservados</span>
       </div>
       <div className="flex cursor-pointer justify-center gap-3">
-        <FaFacebook className="text-3xl" />
-        <FaInstagram className="text-3xl" />
-        <FaWhatsapp className="text-3xl" />
+        <FaFacebook className="text-3xl hover:scale-110" />
+        <FaInstagram className="text-3xl hover:scale-110" />
+        <FaWhatsapp className="text-3xl hover:scale-110" />
       </div>
     </footer>
   );

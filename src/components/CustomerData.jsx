@@ -15,7 +15,7 @@ const CustomerData = ({ nextStep, register, errors }) => {
   }, [cartState.cart, navigate]);
 
   return (
-    <div className="mx-auto flex w-[450px] flex-col items-center justify-center gap-2 rounded-md bg-foreground/10 p-5">
+    <div className="mx-auto flex flex-col items-center justify-center gap-2 rounded-md bg-foreground/10 p-5 md:w-[450px]">
       <Input
         {...register('name')}
         label="Nome"
